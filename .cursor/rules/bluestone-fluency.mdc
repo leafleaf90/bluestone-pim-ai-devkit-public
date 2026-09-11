@@ -1,0 +1,14 @@
+---
+description: Append new Bluestone PIM facts to bluestone-fluency; do not leave them in chat.
+alwaysApply: true
+---
+
+# Bluestone Fluency — keep the playbook current
+
+Canonical skill: `skills/bluestone-fluency/` in this repo.
+
+When a session learns a PIM fact (FAMILY/GROUP/VARIANT, CLA, VLA, MAPI/PAPI, PBC, completeness, where a value belongs):
+
+1. If it is a durable **generic** rule, add it to `model.md`, `gotchas.md`, `auth.md`, or `recipes.md` in generic language (no customer names).
+2. If it is tied to a named project, append a dated row to gitignored `insights.internal.md` only.
+3. Do this before ending the turn. Do not wait to be asked.

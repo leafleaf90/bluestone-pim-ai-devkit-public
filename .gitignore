@@ -1,0 +1,12 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.idea
+*.log
+node_modules
+skills/bluestone-fluency/insights.internal.md
+skills/bluestone-pim-api/
+skills/bluestone-pim-model/
+skills/bluestone-pim-orchestrator/
+skills/bluestone-pim-pbc/
