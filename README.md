@@ -33,13 +33,13 @@ Fluency packages:
 ### Via skills.sh (when listed)
 
 ```bash
-npx skills add bluestone-pim/bluestone-pim-ai-devkit@bluestone-fluency
+npx skills add leafleaf90/bluestone-pim-ai-devkit-public@bluestone-fluency
 ```
 
 Or clone and point the agent at `skills/bluestone-fluency/`:
 
 ```bash
-git clone https://github.com/bluestone-pim/bluestone-pim-ai-devkit.git
+git clone https://github.com/leafleaf90/bluestone-pim-ai-devkit-public.git
 ```
 
 This repo ships **one** skill. Do not force-add `skills/bluestone-fluency/insights.internal.md` (gitignored). That file is a private dated log. The public [insights.md](skills/bluestone-fluency/insights.md) is only a pointer.
