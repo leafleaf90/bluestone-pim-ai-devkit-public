@@ -269,7 +269,7 @@ pluginPartCreator.createGridActionPlugin(gridActionPlugin);
 
 **Use case:** Summary metrics, KPIs, quick-access panels on the PIM dashboard.
 
-Dashboard widgets are **coordinator tools**. Show PIM numbers, availability, and native scores, and jump with `goToPath('/products/{id}')` or `openPluginFullpageModal`. Do not ship storefront listing chrome (prices, bedrooms, marketing tags, “homes found”) even when the basemap is mocked.
+Dashboard widgets are **coordinator tools**. Show PIM numbers, availability, and native scores, and jump with `goToPath('/products/{id}')` or `openPluginFullpageModal`. Do not ship storefront listing chrome (consumer prices, marketing tags, listing counts) even when a map is mocked.
 
 Widgets can have a companion settings component (see §4.9) — the persisted settings are passed as `props.settings`.
 

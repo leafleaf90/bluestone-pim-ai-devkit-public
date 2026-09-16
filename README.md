@@ -1,8 +1,8 @@
 # Bluestone PIM AI DevKit
 
-**[Bluestone Fluency](skills/bluestone-fluency/SKILL.md)** — one Agent Skill that makes a coding agent fluent in **native Bluestone PIM**: the data model, MAPI/PAPI, and PBC UI plugins.
+This GitHub repo is the **DevKit**. **[Bluestone Fluency](skills/bluestone-fluency/SKILL.md)** is the one Agent Skill inside it — it makes a coding agent fluent in **native Bluestone PIM**: the data model, MAPI/PAPI, and PBC UI plugins.
 
-Not a generic PIM dump. Not four overlapping skills. Load Fluency; it tells the agent which file to open next.
+Not a generic PIM dump. Load Fluency; it tells the agent which file to open next.
 
 ## What is Fluency?
 
@@ -30,7 +30,7 @@ Fluency packages:
 
 ## Installation
 
-### Via skills.sh (when listed)
+Install Fluency from this GitHub repo with the [skills CLI](https://skills.sh). `leafleaf90/bluestone-pim-ai-devkit-public` is the DevKit; `@bluestone-fluency` is the skill. That command works now; it does not wait for the skills.sh directory to index the repo.
 
 ```bash
 npx skills add leafleaf90/bluestone-pim-ai-devkit-public@bluestone-fluency

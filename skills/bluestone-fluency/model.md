@@ -61,7 +61,7 @@ Join/lookup files in a source system are keys to related products, not hundreds 
 
 ## Association facts
 
-A fact that is true only for a **specific link** between two products belongs on the association, not on either product. Classic case: the same SKU is Included in one pack and Upgrade in another. Duplicating the SKU to store that flag fails reuse.
+A fact that is true only for a **specific link** between two products belongs on the association, not on either product. Classic case: the same SKU is standard under one parent and optional under another. Duplicating the SKU to store that flag fails reuse.
 
 PIM **core** connections (`POST /products/{id}/connections/products`) are binary: `relationId` + `to` + optional quantity. `ConnectionDto` has no typed attributes.
 
@@ -74,9 +74,9 @@ PIM **core** connections (`POST /products/{id}/connections/products`) are binary
 
 Assign the definition first: `POST /relationDefinitions/relations/{relationId}/attributes` `{ "level": "relation" or "product", "attributeDefinitionId" }`.
 
-Use **product-level** relation attributes when the fact is binary (this pack ↔ this SKU, this spec ↔ this package). They do **not** help a ternary (pack + slot + SKU) on a **shared** choice product. A flag on a shared “choice → pack” edge collapses two SKUs in the same slot to one value. A flag on a shared “choice → SKU” edge cannot differ by pack.
+Use **product-level** relation attributes when the fact is binary (this parent ↔ this SKU). They do **not** help a ternary (parent + choice group + SKU) on a **shared** choice product. A flag on a shared “choice → parent” edge collapses two SKUs in the same group to one value. A flag on a shared “choice → SKU” edge cannot differ by parent.
 
-The ternary decomposes if you introduce a **pack×slot** node (for example `PACK-BATH · Basin`): Mandatory lives on that node (or on pack↔node); Included/Upgrade is then binary on node↔SKU and can be a product-level relation attribute. That is still a junction, just coarser than one card per pick. Cloning the national choice product per pack so a binary link can hold the flag **is** the same junction in disguise.
+The ternary decomposes if you introduce a **parent×choice-group** node: one flag lives on that node (or on parent↔node); the other is then binary on node↔SKU and can be a product-level relation attribute. That is still a junction, just coarser than one card per pick. Cloning the shared choice product per parent so a binary link can hold the flag **is** the same junction in disguise.
 
 Prefer a **pick-level SINGLE** when the flag must behave as a normal product attribute (grid, CLA, completeness, search, PAPI, native publish). Prefer the coarser node + relation attributes when you do not need to search or score the pick as a product. Do not flatten either flag onto the reusable SKU.
 
@@ -84,19 +84,19 @@ Core PIM keeps **one connection per relation type per pair**. Product-level rela
 
 ## Availability scopes
 
-House types, markets, regions, channels, developments/sites, and similar “who can see this” objects are **not sellable**. Prefer a catalog node when you only need assortment membership. Use a reference SINGLE in a dedicated Availability / References catalog when you must relate to them (include/exclude). A **small closed set of regions** as “where this offer is sold” can be a `multi_select` on that sellable product (empty = all listed scopes). Use reference SINGLEs + relations when the region is an object with its own facts (spec version, actor/reason). Do not copy the same ticks onto a reused SKU. Do not model regions as FAMILY / GROUP / VARIANT. Do not clone a reusable option SKU (or room offer) per site so the project can “own” it — relate the shared offer to the site or house type instead.
+Markets, regions, channels, sites, and similar “who can see this” objects are **not sellable**. Prefer a catalog node when you only need assortment membership. Use a reference SINGLE in a dedicated Availability / References catalog when you must relate to them (include/exclude). A **small closed set of regions** as “where this offer is sold” can be a `multi_select` on that sellable product (empty = all listed scopes). Use reference SINGLEs + relations when the region is an object with its own facts. Do not copy the same ticks onto a reused SKU. Do not model regions as FAMILY / GROUP / VARIANT. Do not clone a reusable option SKU per site so the project can “own” it — relate the shared option to the site or channel instead.
 
 ## Prices at more than one scope
 
-PIM has **no native price-book merge** (national list + regional overlay + site + plot). Do not clone the SKU per geography, and do not mint `LIST_GBP_EM_NORTH` columns on the product.
+PIM has **no native price-book merge** (list price + regional overlay + location). Do not clone the SKU per geography, and do not mint a new list-price attribute per region on the product.
 
 | Scope | Where it belongs in PIM |
 |---|---|
 | One national list/display figure | Decimal (and book / version / effective-from / last change-reason) **attributes on that SKU**. A feed ingest **overwrites** that stamp. It is not a price-history stack — dated history needs price-line SINGLEs or the external engine. Optional: a related price-list SINGLE. |
 | Same SKU, different figure per region or site | **Product-level relation attribute** on SKU↔region (or SKU↔site), or a **price-line junction SINGLE** related to the SKU and the scope. Junction if you need stacked dated rows. |
-| Plot / binding quote / VAT | Usually **outside PIM** (CPQ / options platform). A plot is not a product type. |
+| Binding quote / tax / checkout price | Usually **outside PIM** (CPQ or commerce). An order line or location is not a product type. |
 
-**Contexts are one axis** (the `context` header). They are built for **locale**. `contextAware` attributes + `context-fallback` give “this key, else default” — not a national→regional→site→plot stack. Using sales-region ids as contexts can store a second list price on the same SKU **only if** (a) the org will not also need locale on that definition, (b) the overlay is one flat list with fallback to `en`, and (c) cardinality stays small. Compound keys (`en|EM-NORTH`) explode. Plot/site counts do not belong in the context list. Assortment (which package a region sells) still belongs on **relations**, not in a context switch. A brochure figure in PIM is a **projection** unless Pricing has agreed PIM is system of record.
+**Contexts are one axis** (the `context` header). They are built for **locale**. `contextAware` attributes + `context-fallback` give “this key, else default” — not a national→regional→location stack. Using sales-region ids as contexts can store a second list price on the same SKU **only if** (a) the org will not also need locale on that definition, (b) the overlay is one flat list with fallback to `en`, and (c) cardinality stays small. Compound keys (`en|REGION-A`) explode. Site or location counts do not belong in the context list. Assortment (which offer a region sells) still belongs on **relations**, not in a context switch. A brochure figure in PIM is a **projection** unless Pricing has agreed PIM is system of record.
 
 ## Variant axes
 
@@ -128,7 +128,7 @@ This is the default. Pick the type from how the value is **used**, not from how 
 
 | Need | Type | Write |
 |---|---|---|
-| Closed, small vocabulary (Kitchen/Bathroom, Included/Upgrade, Mandatory/Optional, Approve/Pending/Reject, Draft/Live) | `single_select` (`multi_select` if several apply at once) | Option **ids** via `PUT …/select` (or payload `selectValueIds`). Never the label string. Empty `multi_select` can mean “all listed scopes” (e.g. national) when ticks **restrict**. |
+| Closed, small vocabulary (Yes/No, Mandatory/Optional, Approve/Pending/Reject, Draft/Live) | `single_select` (`multi_select` if several apply at once) | Option **ids** via `PUT …/select` (or payload `selectValueIds`). Never the label string. Empty `multi_select` can mean “all listed scopes” (e.g. national) when ticks **restrict**. |
 | Colour chip in the native UI | `single_select` with `restrictions.enum.type = "color"` and option `metadata` = hex (`#c6d8b8`) | Same as select. Do **not** store hex as a second text field. |
 | Growable coded pick-list merchandisers grow (finishes) without a definition edit each time | `dictionary` | Value ids via `PUT …/dictionary`. Not a comment box. |
 | Narrative reason the editor types (photo reject note, exception reason) | `text` | `values[]` or Media Bank `PUT …/simple`. Not a coded pick-list. |
