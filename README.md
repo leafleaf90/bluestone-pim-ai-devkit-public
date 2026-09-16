@@ -1,8 +1,8 @@
 # Bluestone PIM AI DevKit
 
-This GitHub repo is the **DevKit**. **[Bluestone Fluency](skills/bluestone-fluency/SKILL.md)** is the one Agent Skill inside it — it makes a coding agent fluent in **native Bluestone PIM**: the data model, MAPI/PAPI, and PBC UI plugins.
+This GitHub repo is the **DevKit**. **[Bluestone Fluency](skills/bluestone-fluency/SKILL.md)** is the one Agent Skill inside it. It makes a coding agent fluent in **native Bluestone PIM**: the data model, MAPI/PAPI, and PBC UI plugins.
 
-Not a generic PIM dump. Load Fluency; it tells the agent which file to open next.
+Load Fluency; it tells the agent which file to open next.
 
 ## What is Fluency?
 
@@ -19,7 +19,7 @@ Fluency packages:
 | [gotchas.md](skills/bluestone-fluency/gotchas.md) | `resource-id`, 409, prefixes, attribute IDs |
 | [completeness.md](skills/bluestone-fluency/completeness.md) | Completeness, labels, assets, locales |
 | [pbc.md](skills/bluestone-fluency/pbc.md) | Surfaces, `metaInfo`, React 16, `providedEnv` |
-| [api-core.md](skills/bluestone-fluency/api-core.md) / [api-full.md](skills/bluestone-fluency/api-full.md) | Path lookup **only** — do not load by default |
+| [api-core.md](skills/bluestone-fluency/api-core.md) / [api-full.md](skills/bluestone-fluency/api-full.md) | Path lookup **only**; do not load by default |
 | [insights.md](skills/bluestone-fluency/insights.md) | Where a new lesson belongs (public playbook vs private notes) |
 
 ## Requirements
@@ -73,7 +73,7 @@ See [ROADMAP.md](ROADMAP.md) (OpenAPI-generated catalogue, PAPI recipes, Media B
 
 ## Resources
 
-- [Bluestone PIM help — data model / VLA](https://help.bluestonepim.com/the-data-model#VLA)
+- [Bluestone PIM help: data model / VLA](https://help.bluestonepim.com/the-data-model#VLA)
 - [UI Component Library](https://ui-external.test.bluestonepim.com/)
 - [Icon Library](https://icons.test.bluestonepim.com/)
 - TEST app: `https://app.test.bluestonepim.com`
