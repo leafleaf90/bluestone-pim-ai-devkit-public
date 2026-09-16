@@ -6,8 +6,8 @@ Where a value belongs. For HTTP bodies and flags, see [recipes.md](recipes.md) a
 
 | Type | Role |
 |---|---|
-| **FAMILY** | Parent of models. Holds facts that are true for every GROUP under it. Empty of dimensions is correct when the source only has a name. Category copy (long description, USPs) still belongs here when the source has it — that is content, not a variant axis. |
-| **GROUP** | Variant group (the sellable model). Shared constraints live here and inherit to children via **VLA**. |
+| **FAMILY** | Parent of Variant Groups. Holds facts that are true for every GROUP under it. Empty of dimensions is correct when the source only has a name. Category copy (long description, USPs) still belongs here when the source has it — that is content, not a variant axis. |
+| **GROUP** | Variant Group. Shared constraints live here and inherit to children via **VLA**. |
 | **VARIANT** | A child of a GROUP. Create as **SINGLE**, then assign to the GROUP (`/products/variants/append/by-ids`). UI type becomes VARIANT. |
 | **SINGLE** | Standalone product. Also the type used for reusable objects (colour, material, option, price list) and for SKUs before they are assigned as variants. |
 | **BUNDLE** | A sellable set of existing products with quantities. Not a configured quote, not an order line, not “the SKU plus options.” The **bundle configurator** app is separate: choice rules + linked candidates on any main product — it does not require type BUNDLE, and it cannot hold per-link flags. |

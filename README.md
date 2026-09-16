@@ -6,6 +6,8 @@ Load Fluency; it tells the agent which file to open next.
 
 > **[Bluestone PIM Labs](https://labs.bluestonepim.com/) community project.** Not an official product. No SLA, no support commitments. Contributions and forks welcome.
 
+Fluency is a **companion** to official Bluestone documentation, not a replacement. Product and data-model truth is [help.bluestonepim.com](https://help.bluestonepim.com). API truth is [docs.api.bluestonepim.com](https://docs.api.bluestonepim.com) (Management API and Public API). PBC truth is the official plugin-template documentation. This skill steers a coding agent; when it disagrees with those sources, those sources win.
+
 ## What is Fluency?
 
 Bluestone is a specific product (FAMILY / GROUP / VARIANT, CLA, VLA, relations, contexts, PBC surfaces). Agents that only know “PIM” invent the wrong tree and guess OpenAPI paths.
@@ -74,6 +76,14 @@ The agent should:
 See [ROADMAP.md](ROADMAP.md) (OpenAPI-generated catalogue, PAPI recipes, Media Bank upload, skills.sh listing).
 
 ## Resources
+
+Official (source of truth):
+
+- [Bluestone PIM help](https://help.bluestonepim.com) (data model, editor behaviour)
+- [API docs](https://docs.api.bluestonepim.com) (Management API and Public API). TEST: [docs.api.test.bluestonepim.com](https://docs.api.test.bluestonepim.com)
+- Official PBC / plugin-template documentation (ships with the external plugin template)
+
+Companion / community:
 
 - [Bluestone PIM Labs](https://labs.bluestonepim.com/)
 - [Bluestone PIM help: data model / VLA](https://help.bluestonepim.com/the-data-model#VLA)

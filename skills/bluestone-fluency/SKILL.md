@@ -17,6 +17,18 @@ You are fluent in **native Bluestone PIM** — how the product thinks, how you t
 
 This skill is the whole DevKit. Open the linked file for the current task; do **not** load the API catalogues unless you need a specific path.
 
+## Official docs win
+
+This skill is a **companion**. Do not treat it as a substitute for official Bluestone documentation.
+
+| Source | Truth for |
+|---|---|
+| [help.bluestonepim.com](https://help.bluestonepim.com) | Product, data model, editor behaviour |
+| [docs.api.bluestonepim.com](https://docs.api.bluestonepim.com) (TEST: [docs.api.test.bluestonepim.com](https://docs.api.test.bluestonepim.com)) | Management API and Public API contracts |
+| Official PBC / plugin-template docs | Surfaces, `metaInfo`, `@bluestone-ext`, `getAxiosInstance` |
+
+When this skill and those sources disagree, follow the official docs. When OpenAPI omits a runtime prefix or a call fails, confirm the path in the PIM UI Network tab, then record the gotcha here.
+
 ## Open next
 
 | Task | Read |
@@ -56,6 +68,7 @@ Both talk to the same PIM. Auth and path prefix differ. See [auth.md](auth.md).
 
 ## Do not
 
+- Treat this skill as a replacement for help.bluestonepim.com, docs.api.bluestonepim.com, or official PBC / plugin-template docs.
 - Load [api-full.md](api-full.md) “just in case.”
 - Copy customer-specific mappings (collection names, SKU schemes) into generic advice.
 - Treat millimetre width × height (or any infinite axis) as variants.

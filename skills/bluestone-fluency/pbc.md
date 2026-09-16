@@ -2,7 +2,7 @@
 
 Open the **numbered section you need**. Do not read this file in full unless scaffolding a new plugin.
 
-A complete reference for building, registering, and shipping Bluestone PIM UI plugins (PBCs — Plugin-Based Components).
+Agent companion for PBC work. Official plugin-template documentation is the source of truth for UI plugins. This file is a routing aid (surfaces, `metaInfo`, React 16, `providedEnv`), not a replacement.
 
 | § | Topic |
 |---|---|
