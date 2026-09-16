@@ -7,7 +7,7 @@ Bluestone has two API layers and two client modes. Pick both before writing a ca
 | Layer | Typical prefix | Character |
 |---|---|---|
 | **MAPI** (Management API) | PBC: `/api/pim/…`. Machine: `https://api.<env>.bluestonepim.com/pim/…` | Same API the PIM UI uses. Raw, ID-heavy. Confirmed via Network tab. |
-| **PAPI** (Partner/Public API) | Machine: `https://api.<env>.bluestonepim.com/v1/…`. Auth: `x-api-key` (a **PAPI key**, not the MAPI Bearer). Docs: `https://docs.api.<env>.bluestonepim.com/openapi/page.json` | Only products (and their attributes, relations, media) that have been **synced** via `papi-sync`. Unpublished and never-synced records are absent. Payloads are denormalised: attribute **name** + **number** + `values[]`, `media[].previewUri` / `downloadUri`, relations as `{ number, productId, reverse }`. |
+| **PAPI** (Public API) | Machine: `https://api.<env>.bluestonepim.com/v1/…`. Auth: `x-api-key` (a **PAPI key**, not the MAPI Bearer). Docs: `https://docs.api.<env>.bluestonepim.com/openapi/page.json` | Only products (and their attributes, relations, media) that have been **synced** via `papi-sync`. Unpublished and never-synced records are absent. Payloads are denormalised: attribute **name** + **number** + `values[]`, `media[].previewUri` / `downloadUri`, relations as `{ number, productId, reverse }`. |
 
 Default to MAPI when matching UI behaviour (create product, CLA, VLA). Use **PAPI for downstream / published reads** (storefront, sales preview, export proof). Catalog loaders and PIM writes need **MAPI** `client_id` / `client_secret`. A PAPI key in `.env` does not publish anything — something must run a PAPI sync first.
 
