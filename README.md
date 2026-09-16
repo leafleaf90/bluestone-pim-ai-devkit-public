@@ -4,6 +4,8 @@ This GitHub repo is the **DevKit**. **[Bluestone Fluency](skills/bluestone-fluen
 
 Load Fluency; it tells the agent which file to open next.
 
+> **[Bluestone PIM Labs](https://labs.bluestonepim.com/) community project.** Not an official product. No SLA, no support commitments. Contributions and forks welcome.
+
 ## What is Fluency?
 
 Bluestone is a specific product (FAMILY / GROUP / VARIANT, CLA, VLA, relations, contexts, PBC surfaces). Agents that only know “PIM” invent the wrong tree and guess OpenAPI paths.
@@ -73,6 +75,7 @@ See [ROADMAP.md](ROADMAP.md) (OpenAPI-generated catalogue, PAPI recipes, Media B
 
 ## Resources
 
+- [Bluestone PIM Labs](https://labs.bluestonepim.com/)
 - [Bluestone PIM help: data model / VLA](https://help.bluestonepim.com/the-data-model#VLA)
 - [UI Component Library](https://ui-external.test.bluestonepim.com/)
 - [Icon Library](https://icons.test.bluestonepim.com/)
